@@ -17,29 +17,15 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Appliance Energy Use in Australia</h1>
-    <p>This sites gives a simple overview of household appliance energy consumption in the Australian market.</p>
-
-    <div class="grid">
-    <section class="card">
-    <h2>Did you know?</h2>
-    <ul>
-      <li>Refrigerators and televisions are among the top energy users in households.</li>
-      <li>Star ratings on appliances help compare long-term energy costs.</li>
-      <li>Simple behaviour changes, such as switching devices off at the wall, can save significant energy each year.</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>Why energy efficiency matters</h2>
-    <p>
-      Energy-efficient appliances not only cut electricity bills but also support Australia’s transition toward cleaner energy.  
-      Choosing wisely today creates benefits that last for the lifetime of the product.
-    </p>
-  </section>
-  </div>
-  </main>
+  <h1>Appliance Energy Consumption</h1>
+  <div id="content"></div>
+  <!-- Give the SVG a size so shapes can be seen -->
+  <svg width="300" height="150"></svg>
+  <!-- Load D3 first, then your D3 code file -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="energy-d3.js"></script>
+  
+</body>
 
 <footer>
     <div class="footer-inner">
@@ -47,5 +33,4 @@
       <span>Built with assistance from GenAI for starter code/content</span>
     </div>
 </footer>
-</body>
 </html>
