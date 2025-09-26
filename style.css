@@ -24,7 +24,7 @@ html, body {
 /* --- Header & Navigation bar --- */
 header {
   background: var(--brand-bg);
-  position: fixed;
+  position: sticky;       /* stick to top on scroll */
   top: 0;
   z-index: 10;
   width: 100%;
