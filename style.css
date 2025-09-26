@@ -1,0 +1,138 @@
+:root {
+  /* --- New color palette (Blue + Teal) --- */
+  --brand-bg: #1e3a8a;       /* deep blue (nav + footer) */
+  --brand-accent: #FDBD01;   /* neon gold */
+  --brand-accent-2: #fde68a;/* pale amber */
+  --text: #1f2937;           /* dark gray text */
+  --text-invert: #f8fafc;    /* off-white text for dark backgrounds */
+  --page-bg: #f8fafc;        /* light page background */
+}
+
+/* --- Reset & base styles --- */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;               /* full viewport height */
+  display: flex;
+  flex-direction: column;     /* vertical stack: header → main → footer */
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--page-bg);
+}
+
+/* --- Header & Navigation bar --- */
+header {
+  background: var(--brand-bg);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  border-bottom: 3px solid var(--brand-accent);
+}
+
+h1 {
+  font-size: 2.2rem;              /* bigger font */
+  font-weight: 700;               /* bold */
+  margin: 1rem 0 1.5rem;          /* spacing around title */
+  color: var(--brand-bg);         /* deep blue */
+  text-align: center;             /* center the title */
+  letter-spacing: 1px;            /* slight spacing for elegance */
+  position: relative;             /* allow for decoration */
+}
+
+/* --- Add underline accent below h1 --- */
+h1::after {
+  content: "";
+  display: block;
+  width: 60px;                    /* length of the line */
+  height: 4px;                    /* thickness */
+  background: var(--brand-accent);/* neon gold */
+  margin: 8px auto 0;             /* center it under text */
+  border-radius: 2px;
+}
+
+.nav {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+}
+
+.nav img.logo {
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--brand-accent-2);
+  padding: 6px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-invert);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  background: rgba(219, 170, 63, 0.2); /* light orange hover */
+}
+
+.nav a.active {
+  background: var(--brand-accent);
+  color: #072f3b; /* dark teal for contrast */
+}
+
+/* --- Main content area --- */
+main {
+  flex: 1;                    /* take up all available space */
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+  padding-top: 50px;
+}
+
+h1 { margin-top: 0; }
+
+/* --- Content cards --- */
+.card {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ADD8E6;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr; /* always 1 column */
+}
+
+.grid-vertical {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* --- Footer --- */
+footer {
+  margin-top: 40px;
+  background: var(--brand-bg);
+  color: var(--text-invert);
+  border-top: 3px solid var(--brand-accent);
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: auto;
+  padding: 14px 16px;
+  font-size: .95rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
