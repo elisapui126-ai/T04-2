@@ -1,5 +1,5 @@
 // t04-5-bars.js
-const createBarChart = (data) => {
+/* const createBarChart = (data) => {
 const svg = d3.select(".responsive-svg-container")
 .append("svg")
 .attr("viewBox", "0 0 1200 400") // temporary; we’ll adjust layout soon
@@ -11,4 +11,43 @@ svg
 .attr("class", d => `bar bar-${d.count}`)
 .attr("width", d => d.count) // uses your numeric column directly
 .attr("height", 16); // constant bar height
+}; */
+
+// t04-5-bars.js 04-6
+const createBarChart = (data) => {
+// choose a narrow width for scaling
+const viewW = 500; // narrow on purpose (forces x scaling)
+const viewH = 1600; // tall logical space for many bars
+// Physical display size (what you see on the page)
+const displayW = 640; // try 480–800 as you prefer
+const displayH = 520; // try 360–500
+const svg = d3.select(".responsive-svg-container")
+.append("svg")
+.attr("viewBox", `0 0 ${viewW} ${viewH}`) // logical coords
+.attr("width", displayW) // actual rendered size
+.attr("height", displayH) // actual rendered size
+.style("border", "1px solid black"); 
+// … (we’ll add scales and bars next)
+// x: numeric (e.g., count)
+const xMax = d3.max(data, d => d.count); // adjust 'count' if your column name differs
+const xScale = d3.scaleLinear()
+.domain([0, xMax]) // data space
+.range([0, viewW]); // pixels across the logical width
+// … (add y-scale next)
+// Y scale (categorical) — change 'brand' if your category column differs
+const yScale = d3.scaleBand()
+.domain(data.map(d => d.brand))
+.range([0, viewH])
+.paddingInner(0.2)
+.paddingOuter(0.1);
+// Bars
+svg.selectAll("rect")
+.data(data)
+.join("rect")
+.attr("class", d => `bar bar-${d.count}`)
+.attr("x", 0)
+.attr("y", d => yScale(d.brand))
+.attr("width", d => xScale(d.count))
+.attr("height", yScale.bandwidth())
+.attr("fill", "steelblue");
 };
